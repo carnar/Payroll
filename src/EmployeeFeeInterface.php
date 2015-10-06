@@ -1,4 +1,5 @@
 <?php 
+namespace Payroll;
 
 interface EmployeeFeeInterface  
 {
@@ -8,5 +9,5 @@ interface EmployeeFeeInterface
      * @param  Employee $employee
      * @return float
      */
-    public function fee(Employee $employee);
+    public function fee(EmployeeInterface $employee);
 }
