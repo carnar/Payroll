@@ -1,8 +1,6 @@
 <?php 
 namespace Payroll;
 
-use Payroll\EmployeeInterface;
-
 interface PayrollServiceInterface 
 {
     /**
