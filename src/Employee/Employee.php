@@ -1,12 +1,12 @@
 <?php 
 namespace Payroll\Employee;
 
-use Payroll\EmployeeInterface;
+use Payroll\Employee\EmployeeInterface;
 
 class Employee implements EmployeeInterface 
 {
     private $id;
-    private $name;
+    public $name;
     private $baseSalary;
     private $type;
 

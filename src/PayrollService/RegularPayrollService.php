@@ -1,8 +1,9 @@
 <?php
 namespace Payroll\PayrollService;
 
-use Payroll\FeeService\EmployeeFeeInterface;
 use Payroll\Employee\EmployeeInterface;
+use Payroll\FeeService\EmployeeFeeInterface;
+use Payroll\FeeService\FeeableInterface;
 
 class RegularPayrollService implements PayrollServiceInterface 
 {
@@ -31,11 +32,11 @@ class RegularPayrollService implements PayrollServiceInterface
      * Make instance of Regular Payroll Service.
      *
      * @param \Payroll\FeeService\EmployeeFeeInterface $isrService
-     * @param \Payroll\FeeService\EmployeeFeeInterface $igssService
+     * @param \Payroll\FeeService\FeeableInterface $igssService
      * @param \Payroll\FeeService\EmployeeFeeInterface $loanService
      */
     public function __construct(EmployeeFeeInterface $isrService, 
-                                EmployeeFeeInterface $igssService, 
+                                FeeableInterface $igssService, 
                                 EmployeeFeeInterface $loanService)
     {
         $this->isrService = $isrService;
@@ -53,7 +54,7 @@ class RegularPayrollService implements PayrollServiceInterface
     {
         return $employee->getBaseSalary() - 
                 $this->isrService->fee($employee) -
-                $this->igssService->fee($employee) -
+                $this->igssService->fee($employee->getBaseSalary()) -
                 $this->loanService->fee($employee);
     }
 }

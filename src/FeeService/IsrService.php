@@ -1,4 +1,4 @@
-<?php
+<?php 
 namespace Payroll\FeeService;
 
 use Payroll\Employee\EmployeeInterface;
@@ -6,17 +6,17 @@ use Payroll\Employee\EmployeeInterface;
 /**
  * Fake
  */
-class EmployeeLoanService implements EmployeeFeeInterface
+class IsrService implements EmployeeFeeInterface 
 {
     /**
-     * Get fake loan fee for a employee base salary.
+     * Get *fake* ISR fee for a employee base salary.
      *
      * @param  \Payroll\Employee\EmployeeInterface $employee
      * @return float
      */
     public function fee(EmployeeInterface $employee)
     {
-        // Replace for real implementation, maybe a query to loan db.
-        return 50;
+        // Repace for real implementation, maybe a query to salary db.
+        return 30;
     }
 }

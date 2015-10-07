@@ -9,7 +9,7 @@ class RegularPayrollServiceTest extends PHPUnit_Framework_TestCase
     public function it_calculates_salary_for_a_regular_employee_whose_base_salary_is_1000()
     {
         $employeeMock = $this->getMock('Payroll\Employee\EmployeeInterface');
-        $employeeMock->expects($this->once())
+        $employeeMock->expects($this->exactly(2))
                         ->method('getBaseSalary')
                         ->will($this->returnValue(1000));
 
@@ -23,7 +23,7 @@ class RegularPayrollServiceTest extends PHPUnit_Framework_TestCase
                         ->method('fee')
                         ->will($this->returnValue(100));
 
-        $igssServiceMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
+        $igssServiceMock = $this->getMock('Payroll\FeeService\FeeableInterface');
         $igssServiceMock->expects($this->once())
                         ->method('fee')
                         ->will($this->returnValue(30)); 
@@ -43,7 +43,7 @@ class RegularPayrollServiceTest extends PHPUnit_Framework_TestCase
     public function it_calculates_salary_for_a_regular_employee_whose_base_salary_is_5000()
     {
         $employeeMock = $this->getMock('Payroll\Employee\EmployeeInterface');
-        $employeeMock->expects($this->once())
+        $employeeMock->expects($this->exactly(2))
                         ->method('getBaseSalary')
                         ->will($this->returnValue(5000));
 
@@ -57,7 +57,7 @@ class RegularPayrollServiceTest extends PHPUnit_Framework_TestCase
                         ->method('fee')
                         ->will($this->returnValue(0));
 
-        $igssServiceMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
+        $igssServiceMock = $this->getMock('Payroll\FeeService\FeeableInterface');
         $igssServiceMock->expects($this->once())
                         ->method('fee')
                         ->will($this->returnValue(150)); 
