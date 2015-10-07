@@ -1,5 +1,7 @@
 <?php
-namespace Payroll;
+namespace Payroll\FeeService;
+
+use Payroll\Employee\EmployeeInterface;
 
 class EmployeeLoanService implements EmployeeFeeService 
 {

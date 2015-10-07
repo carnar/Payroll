@@ -1,5 +1,5 @@
 <?php 
-namespace Payroll;
+namespace Payroll\FeeService;
 
 interface FeeableInterface 
 {

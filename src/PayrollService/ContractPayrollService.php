@@ -1,5 +1,8 @@
 <?php
-namespace Payroll;
+namespace Payroll\PayrollService;
+
+use Payroll\Employee\EmployeeInterface;
+use Payroll\FeeService\EmployeeFeeInterface;
 
 class ContractPayrollService implements PayrollServiceInterface
 {
@@ -13,7 +16,7 @@ class ContractPayrollService implements PayrollServiceInterface
     /**
      * Create a instance.
      * 
-     * @param \Payroll\EmployeeFeeInterface
+     * @param \Payroll\FeeService\EmployeeFeeInterface
      */
     public function __construct(EmployeeFeeInterface $loanService)
     {
@@ -23,7 +26,7 @@ class ContractPayrollService implements PayrollServiceInterface
     /**
      * Calculate salary for a Contract Employee.
      * 
-     * @param  \Payroll\EmployeeInterface
+     * @param  \Payroll\Employee\EmployeeInterface
      * @return float
      */
     public function salary(EmployeeInterface $employee)

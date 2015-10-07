@@ -1,5 +1,5 @@
 <?php 
-use Payroll\IgssService;
+use Payroll\FeeService\IgssService;
 
 class IgssServiceTest extends PHPUnit_Framework_TestCase 
 {

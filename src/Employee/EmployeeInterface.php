@@ -1,5 +1,5 @@
 <?php 
-namespace Payroll;
+namespace Payroll\Employee;
 
 interface EmployeeInterface
 {
@@ -9,12 +9,6 @@ interface EmployeeInterface
      * @return string
      */
     public function type();
-
-    /**
-     * Set base salary with amount given.
-     * 
-     */
-    public function setBaseSalary($amount);
 
     /**
      * Get base salary.

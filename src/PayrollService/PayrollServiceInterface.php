@@ -1,10 +1,12 @@
 <?php 
-namespace Payroll;
+namespace Payroll\PayrollService;
+
+use Payroll\Employee\EmployeeInterface;
 
 interface PayrollServiceInterface 
 {
     /**
-     * @param  \Payroll\EmployeeInterface
+     * @param  \Payroll\Employee\EmployeeInterface
      * @return float
      */
     public function salary(EmployeeInterface $employee);

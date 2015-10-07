@@ -1,5 +1,5 @@
 <?php 
-namespace Payroll;
+namespace Payroll\FeeService;
 
 class IgssService implements FeeableInterface 
 {

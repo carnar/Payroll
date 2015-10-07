@@ -1,35 +1,38 @@
 <?php
-namespace Payroll;
+namespace Payroll\PayrollService;
+
+use Payroll\FeeService\EmployeeFeeInterface;
+use Payroll\Employee\EmployeeInterface;
 
 class RegularPayrollService implements PayrollServiceInterface 
 {
     /**
      * ISR Service instance.
      *
-     * @var \Payroll\EmployeeFeeInterface
+     * @var \Payroll\FeeService\EmployeeFeeInterface
      */
     private $isrService;
 
     /**
      * IGSS Service instance.
      *
-     * @var \Payroll\EmployeeFeeInterface
+     * @var \Payroll\FeeService\EmployeeFeeInterface
      */
     private $igssService;
 
     /**
      * Loan Service instance.
      *
-     * @var \Payroll\EmployeeFeeInterface
+     * @var \Payroll\FeeService\EmployeeFeeInterface
      */
     private $loanService;
 
     /**
      * Make instance of Regular Payroll Service.
      *
-     * @param \Payroll\EmployeeFeeInterface $isrService
-     * @param \Payroll\EmployeeFeeInterface $igssService
-     * @param \Payroll\EmployeeFeeInterface $loanService
+     * @param \Payroll\FeeService\EmployeeFeeInterface $isrService
+     * @param \Payroll\FeeService\EmployeeFeeInterface $igssService
+     * @param \Payroll\FeeService\EmployeeFeeInterface $loanService
      */
     public function __construct(EmployeeFeeInterface $isrService, 
                                 EmployeeFeeInterface $igssService, 
@@ -43,7 +46,7 @@ class RegularPayrollService implements PayrollServiceInterface
     /**
      * Calculate employee salary.
      *
-     * @param  \Payroll\EmployeeInterface $employee
+     * @param  \Payroll\Employee\EmployeeInterface $employee
      * @return float
      */
     public function salary(EmployeeInterface $employee)
