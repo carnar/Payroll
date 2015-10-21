@@ -7,7 +7,14 @@ use Payroll\FeeService\EmployeeFeeInterface;
 class ContractPayrollService implements PayrollServiceInterface
 {
     /**
-     * Instance of Fee Service.
+     * Instance of Fee Service for ISR
+     * 
+     * @var \Payroll\EmployeeFeeInterface
+     */
+    private $isrService;
+
+    /**
+     * Instance of Fee Service for Loan
      * 
      * @var \Payroll\EmployeeFeeInterface
      */
@@ -17,9 +24,11 @@ class ContractPayrollService implements PayrollServiceInterface
      * Create a instance.
      * 
      * @param \Payroll\FeeService\EmployeeFeeInterface
+     * @param \Payroll\FeeService\EmployeeFeeInterface
      */
-    public function __construct(EmployeeFeeInterface $loanService)
+    public function __construct(EmployeeFeeInterface $isrService, EmployeeFeeInterface $loanService)
     {
+        $this->isrService = $isrService;
         $this->loanService = $loanService;
     }
 
@@ -31,6 +40,8 @@ class ContractPayrollService implements PayrollServiceInterface
      */
     public function salary(EmployeeInterface $employee)
     {
-        return $employee->getBaseSalary() - $this->loanService->fee($employee);        
+        return $employee->getBaseSalary() - 
+            $this->isrService->fee($employee) -
+            $this->loanService->fee($employee);        
     }
 }

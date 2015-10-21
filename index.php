@@ -17,7 +17,9 @@ $payroll = [];
 foreach ($employees as $employee) {
     switch ($employee->type()) {
         case 'contract':
-            $payrollService = new ContractPayrollService(new EmployeeLoanService);
+            $payrollService = new ContractPayrollService(
+                new IsrService, 
+                new EmployeeLoanService);
             break;
         
         default:

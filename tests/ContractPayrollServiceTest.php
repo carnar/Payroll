@@ -12,15 +12,20 @@ class ContractPayrollServiceTest extends PHPUnit_Framework_TestCase
         $employeeMock->expects($this->once())
                         ->method('getBaseSalary')
                         ->will($this->returnValue(1000));
-        $loanMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
-        $loanMock->expects($this->once())
+        $isrServiceMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
+        $isrServiceMock->expects($this->once())
+                        ->method('fee')
+                        ->will($this->returnValue(50));
+        $loanServiceMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
+        $loanServiceMock->expects($this->once())
                     ->method('fee')
                     ->will($this->returnValue(50));
 
-        $payrollService = new ContractPayrollService($loanMock);
+        $payrollService = new ContractPayrollService($isrServiceMock, 
+            $loanServiceMock);
         $result = $payrollService->salary($employeeMock);
 
-        $this->assertEquals(950, $result);
+        $this->assertEquals(900, $result);
     }
 
     /**
@@ -32,15 +37,19 @@ class ContractPayrollServiceTest extends PHPUnit_Framework_TestCase
         $employeeMock->expects($this->once())
                         ->method('getBaseSalary')
                         ->will($this->returnValue(5000));
-        $loanMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
-        $loanMock->expects($this->once())
+        $isrServiceMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
+        $isrServiceMock->expects($this->once())
+                        ->method('fee')
+                        ->will($this->returnValue(150));
+        $loanServiceMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
+        $loanServiceMock->expects($this->once())
                     ->method('fee')
                     ->will($this->returnValue(750));
 
-        $payrollService = new ContractPayrollService($loanMock);
+        $payrollService = new ContractPayrollService($isrServiceMock, $loanServiceMock);
         $result = $payrollService->salary($employeeMock);
 
-        $this->assertEquals(4250, $result);
+        $this->assertEquals(4100, $result);
     }
 
     /**
@@ -52,14 +61,18 @@ class ContractPayrollServiceTest extends PHPUnit_Framework_TestCase
         $employeeMock->expects($this->once())
                         ->method('getBaseSalary')
                         ->will($this->returnValue(3500));
-        $loanMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
-        $loanMock->expects($this->once())
+        $isrServiceMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
+        $isrServiceMock->expects($this->once())
+                        ->method('fee')
+                        ->will($this->returnValue(100));
+        $loanServiceMock = $this->getMock('Payroll\FeeService\EmployeeFeeInterface');
+        $loanServiceMock->expects($this->once())
                     ->method('fee')
                     ->will($this->returnValue(0));
 
-        $payrollService = new ContractPayrollService($loanMock);
+        $payrollService = new ContractPayrollService($isrServiceMock, $loanServiceMock);
         $result = $payrollService->salary($employeeMock);
 
-        $this->assertEquals(3500, $result);
+        $this->assertEquals(3400, $result);
     }
 }
